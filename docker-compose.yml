@@ -1,0 +1,19 @@
+version: "3"
+services:
+    web:
+        build: .
+        environment:
+            HTTP_PROXY: http://proxy.kobe-np.co.jp:8080
+            HTTPS_PROXY: http://proxy.kobe-np.co.jp:8080
+        ports: 
+            - "15000:80"
+        #volumes:
+            #- ./app:/app
+
+    db:
+        build: ./mysql/
+        volumes:
+            - ./mysql/data:/var/lib/mysql
+            - ./mysql/sqls:/docker-entrypoint-initdb.d
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
