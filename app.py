@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_restful import Api
+from flask_cors import CORS
 
 from api.views.user import UsersAPI, UserAPI
 from api.database import init_db
@@ -8,6 +9,8 @@ from api.database import init_db
 def create_app():
 
     app = Flask(__name__)
+    CORS(app)
+
     app.config.from_object("api.config.Config")
 
     init_db(app)

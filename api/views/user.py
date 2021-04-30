@@ -16,7 +16,7 @@ class UsersAPI(Resource):
     def get(self):
         results = UserModel.query.all()
         jsonData = UserSchema(many=True).dump(results)
-        return {"data": jsonData}
+        return jsonData, 201
 
 
     def post(self):

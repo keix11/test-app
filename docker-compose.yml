@@ -7,9 +7,8 @@ services:
             HTTPS_PROXY: http://proxy.kobe-np.co.jp:8080
         ports: 
             - "15000:80"
-        #volumes:
-            #- ./app:/app
-
+        volumes:
+            - .:/app
     db:
         build: ./mysql/
         volumes:
