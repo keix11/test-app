@@ -5,6 +5,9 @@
             <td> {{ user.state }} </td>
         </tr>
     </table>
+    <pre>
+    {{ $data }}
+    </pre>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
@@ -17,11 +20,21 @@ const app = new Vue({
         users: null
     },
     created: function() {
-        var vm = this;
-        axios.get("http://localhost:15000/api/users")
-        .then(function(response) {
-            vm.users = response.data;
-        })
+        //var vm = this;
+        //axios.get("http://localhost:15000/api/users")
+        //.then(function(response) {
+        //    vm.users = response.data;
+        //})
+        this.updateApi()
+    },
+    methods: {
+        updateApi: function() {
+            var vm = this;
+            axios.get("http://localhost:15000/api/users")
+            .then(function(response) {
+                vm.users = response.data;
+            })
+        }
     }
 })
 </script>
